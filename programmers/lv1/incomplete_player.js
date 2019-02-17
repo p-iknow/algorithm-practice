@@ -39,3 +39,45 @@ const idx = a.indexOf(3)
 if (idx > -1) a.splice(idx, 1)
 
 
+// reduce 활용
+var dic = completion.reduce((obj, t)=> (
+    obj[t]= obj[t] ? obj[t]+1 : 1 , obj) ,{});
+
+function solution(participant, completion) {
+    var dic = completion.reduce((obj, t)=> (obj[t]= obj[t] ? obj[t]+1 : 1 , obj) ,{});
+    //dic {josipa: 1, filipa: 1, marina: 1, nikola: 1}
+    return participant.find(t=> {
+        if(dic[t])
+            dic[t] = dic[t]-1;
+        else 
+            return true;
+    });
+}
+
+// map 활용
+function solution(participant, completion) {
+    let key = new Map()
+
+    for(let i = 0 ; i < completion.length ; i ++){
+        if(!key.has(completion[i])){
+            key.set(completion[i],1)
+        }else{
+            key.set(completion[i], key.get(completion[i])+1)
+        }        
+    }
+
+    for(let i = 0 ; i < participant.length ; i ++){
+
+
+        if(!key.has(participant[i])){
+            return participant[i]
+        }else{
+            let count = key.get(participant[i])
+            if(count ===0){
+                return participant[i]
+            }else(
+                key.set(participant[i], count-1)
+            )
+        }
+    }
+}
