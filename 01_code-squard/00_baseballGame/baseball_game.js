@@ -26,6 +26,8 @@ function makeGuess(){
     return guess;
 }
 
+
+
 function compare(answer, guess) {
     var strike = 0, ball = 0
     if(answer[0] === guess[0]){strike++;}
@@ -38,6 +40,7 @@ function compare(answer, guess) {
     else if(answer[2] === guess[0] || answer[2] === guess[1]){ball++;}
     
     // for (i = 0; i < 3; i++) {
+    //     compare2(i)
     //     for (j = 0; j < 3; j++) {
     //         if (answer[i] === guess[j]) {
     //             if (i === j) {
