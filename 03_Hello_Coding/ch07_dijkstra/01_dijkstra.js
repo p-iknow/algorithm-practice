@@ -20,8 +20,8 @@ costs.fin = Infinity;
 
 //has table to represent node's parents
 const parents = {};
-parents.a = "start"
-parents.b = "start"
+parents.a = "start";
+parents.b = "start";
 parents.fin = null;
 
 //Array to record process history
@@ -43,12 +43,12 @@ function findLowestCostNode(costs){
 
 
 // prcess start
-let node = findLowestCostNode(costs);
+let node = findLowestCostNode(costs);  // 아직 처리하지 않은 가장 싼 정점을 찾는다
 
-while(node) {
-    let cost = costs[node], neighbors = graph[node];
-    for( let n in neighbors) {
-        let newCost = cost + neighbors[n];
+while(node) {  // 모든 정점을 처리하면 반목문이 종료 된다. 
+    let cost = costs[node], neighbors = graph[node]; 
+    for( let n in neighbors) {  // 모든 이웃에 대해 반복한다. 
+        let newCost = cost + neighbors[n]; 
         if (costs[n] > newCost) {
             costs[n] = newCost;
             parents[n] = node;
