@@ -1,4 +1,5 @@
-mport math
+# https://www.hackerrank.com/challenges/arrays-ds/problem?h_r=profile
+import math
 import os
 import random
 import re
