@@ -25,8 +25,12 @@ function readLine() {
 }
 
 // Complete the reverseArray function below.
-function reverseArray(a) {
-
+function reverseArray(count, arr) {
+    let reverseArr = [];
+    for( let i=0; i<count; i++) {
+        reverseArr.push(arr[count-i-1])
+    }
+    return reverseArr;
 
 }
 
@@ -37,7 +41,7 @@ function main() {
 
     const arr = readLine().split(' ').map(arrTemp => parseInt(arrTemp, 10));
 
-    const res = reverseArray(arr);
+    const res = reverseArray(arrCount, arr);
 
     ws.write(res.join(' ') + '\n');
 
