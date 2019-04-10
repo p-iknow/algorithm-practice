@@ -3,7 +3,7 @@
 //     let res; 
 //     inputArray.forEach((el, i, arr,) => {
 //         if (i === 1 ) {res = el * arr[i-1]}
-//         if ( 1 < i ) { 
+//         if ( 1 < i a ) { 
 //             res = res < (el * arr[i - 1]) ? el * arr[i -1] : res;        
 //         }   
 //     })
