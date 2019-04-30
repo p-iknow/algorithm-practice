@@ -2,6 +2,8 @@
 
 ## Problem
 
+![image](https://user-images.githubusercontent.com/35516239/56940892-11b0d980-6b4c-11e9-839f-30dec2a2a2d1.png)
+
 
 ## What I learned 
 
