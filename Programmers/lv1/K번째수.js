@@ -10,3 +10,9 @@ const solution = (arr, commands) => {
   });
   return answer;
 };
+
+function solution(array, commands) {
+  return commands.map(([from, to, k]) => {
+    return array.slice(from - 1, to).sort((x, y) => x > y)[k - 1];
+  });
+}
