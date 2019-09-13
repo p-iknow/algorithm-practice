@@ -66,10 +66,10 @@ function solution(n, lost, reserve) {
   const actualLost = lost.filter(el => reserve.indexOf(el) === -1);
 
   const set = Array.apply(undefined, new Array(n)).map((el, i) =>
-    actualLost.indexOf(i + 1) === -1 ? true : false
+    actualLost.indexOf(i + 1) === -1
   );
 
-  for (let hero of actualReserve) {
+  for (const hero of actualReserve) {
     if (set[hero - 1 - 1] === false) {
       set[hero - 1 - 1] = true;
     } else if (set[hero - 1 + 1] === false) {
