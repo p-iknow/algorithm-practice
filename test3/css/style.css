@@ -1,0 +1,89 @@
+body {
+  background-color: lightslategrey;
+  font-family: sans-serif;
+}
+h1 {
+  text-align: center;
+  color: white;
+}
+article {
+  margin: 5px auto;
+  padding: 10px;
+  width: 600px;
+  height: 200px;
+  background-color: white;
+}
+.content .btn_delete {
+  margin: 10px;
+}
+.cover {
+  /* dimmed 처리와 모달창을 정중앙에 띄우기 위한 배경입니다. css를 추가하세요. */
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.dimmed {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  /* dimmed된 배경 처리 css를 넣으세요. */
+}
+.wrapper {
+  /* .layer가 정중앙에 뜨게 하기 위한 wrapper입니다. 적절한 css를 넣으세요. */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  /* 실제 모달창 박스입니다. 요건에 맞게 css를 추가하세요.*/
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  width: 320px;
+  min-height: 200px;
+  padding: 10px;
+  box-shadow: dimgray 0 0 10px;
+  text-align: center;
+}
+.modal .close {
+  background: inherit;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  position: absolute;
+  top: 7.125px;
+  right: 5px;
+}
+.modal .close:focus {
+  outline: none;
+}
+
+.modal p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visible {
+  visibility: visible;
+}
+
+body.visible {
+  overflow-y: hidden;
+}

@@ -1,0 +1,21 @@
+#btns {
+  margin: 30px auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+.btn {
+  height: 48px;
+  font-size: 24px;
+  background: #ebebeb;
+  text-align: center;
+  line-height: 48px;
+  border: 1px solid grey;
+  /* vertical-align: middle; */
+}
+
+#btn5 {
+  cursor: pointer;
+}
