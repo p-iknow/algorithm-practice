@@ -1,0 +1,11 @@
+{
+  "name": "Algo-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/P-iknow/algorithm-practice.git",
+  "author": "P-iknow <apricotsoul@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  }
+}
