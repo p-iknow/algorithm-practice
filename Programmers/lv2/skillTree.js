@@ -10,14 +10,6 @@
 //   return skillMap;
 // };
 
-const getSkillMapFrom = skill => {
-  const skillMap = {};
-  skill.split("").forEach(el => {
-    skillMap[el] = true;
-  });
-  return skillMap;
-};
-
 // const isPossibleSkillTree = (skillTree, skillMap) => {
 //   const skillStack = [];
 
@@ -37,23 +29,33 @@ const getSkillMapFrom = skill => {
 //   });
 // };
 
-const isPossibleSkillTree = (skillTree, skillMap, skillQue) => {
-  return skillTree.every((skill, i, arr) => {
-    const isUnrelatedSkill = !skillMap[skill];
-    if (isUnrelatedSkill) return true;
-    if (skillQue[0] === skill) {
-      skillQue.shift();
-      return true;
-    }
-    return false;
-  });
-};
-
 function solution(skill, skillTrees) {
+  const getSkillMapFrom = skill => {
+    const map = {};
+    skill.split("").forEach(el => {
+      map[el] = true;
+    });
+    return map;
+  };
+
   const skillMap = getSkillMapFrom(skill);
+
+  const isPossibleSkillTree = (skillTree, skillQue) => {
+    return [...skillTree].every(skill => {
+      const isUnrelatedSkill = !skillMap[skill];
+      if (isUnrelatedSkill) return true;
+      if (skillQue[0] === skill) {
+        skillQue.shift();
+        return true;
+      }
+      return false;
+    });
+  };
+
   const skillQue = [...skill];
+
   const answer = skillTrees.filter(skillTree => {
-    return isPossibleSkillTree([...skillTree], skillMap, [...skillQue]);
+    return isPossibleSkillTree(skillTree, [...skillQue]);
   }).length;
   return answer;
 }
