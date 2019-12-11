@@ -10,15 +10,15 @@
 const minSubArrayLen = function(s, nums) {
   let res = Infinity;
   let sum = 0;
-  let i = 0;
+  let start = 0;
 
   for (let j = 0; j < nums.length; j++) {
     sum += nums[j];
 
     while (sum >= s) {
-      res = Math.min(res, j - i + 1);
-      sum -= nums[i];
-      i++;
+      res = Math.min(res, j - start + 1);
+      sum -= nums[start];
+      start++;
     }
   }
 
