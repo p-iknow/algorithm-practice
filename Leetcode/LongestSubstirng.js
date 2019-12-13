@@ -28,27 +28,48 @@
 //   return Math.max(...container.map(arr => arr.length));
 // };
 
-var lengthOfLongestSubstring = function(s) {
-  let map = {};
-  let start = 0;
-  let maxLen = 0;
-  let arr = s.split("");
+// var lengthOfLongestSubstring = function(s) {
+//   let map = {};
+//   let start = 0;
+//   let maxLen = 0;
+//   let arr = s.split("");
 
-  for (i = 0; i < s.length; i++) {
-    let current = map[arr[i]];
-    if (current != null && start <= current) {
-      start = current + 1;
-    } else {
-      maxLen = Math.max(maxLen, i - start + 1);
-    }
+//   for (i = 0; i < s.length; i++) {
+//     let current = map[arr[i]];
+//     if (current != null && start <= current) {
+//       start = current + 1;
+//     } else {
+//       maxLen = Math.max(maxLen, i - start + 1);
+//     }
 
-    map[arr[i]] = i;
+//     map[arr[i]] = i;
+//   }
+
+//   return maxLen;
+// };
+
+const lengthOfLongestSubstring = s => {
+  if (s.length < 2) {
+    return s.length;
   }
 
-  return maxLen;
+  let longest = 0;
+  let start = 0;
+  let seen = {};
+
+  [...s].forEach((char, i) => {
+    if (char in seen && start <= seen[char]) {
+      longest = Math.max(i - start, longest);
+      start = seen[char] + 1;
+    }
+
+    seen[char] = i;
+  });
+  return Math.max(s.length - start, longest);
 };
 
+lengthOfLongestSubstring("abcbcbb");
 // lengthOfLongestSubstring("bbbbb");
 // lengthOfLongestSubstring("abcabcbb");
 // lengthOfLongestSubstring("pwwkew");
-lengthOfLongestSubstring("dvdf");
+// lengthOfLongestSubstring("dvdf");
