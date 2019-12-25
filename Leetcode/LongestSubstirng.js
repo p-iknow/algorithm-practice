@@ -55,7 +55,7 @@ const lengthOfLongestSubstring = s => {
 
   let longest = 0;
   let start = 0;
-  let seen = {};
+  const seen = {};
 
   [...s].forEach((char, i) => {
     if (char in seen && start <= seen[char]) {
@@ -68,7 +68,7 @@ const lengthOfLongestSubstring = s => {
   return Math.max(s.length - start, longest);
 };
 
-lengthOfLongestSubstring("abcbcbb");
+lengthOfLongestSubstring("abcbcbbaxyzb");
 // lengthOfLongestSubstring("bbbbb");
 // lengthOfLongestSubstring("abcabcbb");
 // lengthOfLongestSubstring("pwwkew");
