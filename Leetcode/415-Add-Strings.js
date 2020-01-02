@@ -3,6 +3,9 @@
  * @param {string} num2
  * @return {string}
  */
+
+// Carry 를 생각한 접근법을 기억해야 함
+
 const addStrings = function(num1, num2) {
   const len1 = num1.length;
   const len2 = num2.length;
