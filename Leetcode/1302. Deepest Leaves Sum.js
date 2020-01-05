@@ -1,34 +1,3 @@
-const deepestLeavesSum = function(root) {
-  const stk = [];
-  const vals = {};
-  let maxDepth = 1;
-  let sum = 0;
-  stk.push({ node: root, depth: 1 });
-
-  while (stk.length) {
-    const ele = stk.pop();
-    // If vals not set for current depth, initalize;
-    if (!vals[ele.depth]) {
-      vals[ele.depth] = [];
-    }
-    // Add element value to current depth
-    vals[ele.depth].push(ele.node.val);
-
-    // Increase parent node depth by one and store it along with child elements
-    if (ele.node.left) stk.push({ node: ele.node.left, depth: ele.depth + 1 });
-    if (ele.node.right)
-      stk.push({ node: ele.node.right, depth: ele.depth + 1 });
-
-    // Update maxDepth
-    maxDepth = Math.max(maxDepth, ele.depth);
-  }
-  // Sum elements of vals[maxDepth]
-  for (const ele of vals[maxDepth]) {
-    sum += ele;
-  }
-  return sum;
-};
-
 const root = {
   val: 1,
   right: {
@@ -41,6 +10,34 @@ const root = {
     right: { val: 5, right: null, left: null },
     left: { val: 4, right: null, left: { val: 7, right: null, left: null } }
   }
+};
+
+const deepestLeavesSum = root => {
+  const stack = [];
+  const depthMap = new Map();
+  let maxDepth = 1;
+  let sum = 0;
+  stack.push({ node: root, depth: 1 });
+
+  while (stack.length) {
+    const ele = stack.pop();
+    // init if
+    if (!depthMap.get(ele.depth)) {
+      depthMap.set(ele.depth, []);
+    }
+
+    depthMap.get(ele.depth).push(ele.node.val);
+
+    if (ele.node.left)
+      stack.push({ depth: ele.depth + 1, node: ele.node.left });
+    if (ele.node.right)
+      stack.push({ depth: ele.depth + 1, node: ele.node.right });
+
+    maxDepth = Math.max(ele.depth, maxDepth);
+  }
+
+  sum = depthMap.get(maxDepth).reduce((prev, curr) => prev + curr);
+  return sum;
 };
 
 deepestLeavesSum(root);
