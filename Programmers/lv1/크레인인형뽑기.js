@@ -7,7 +7,7 @@ const board = [
 	],
 	moves = [1, 5, 3, 5, 1, 2, 1, 4];
 
-const getGrabbedDol = (position, board) => {
+const getGrabbedDoll = (position, board) => {
 	const x = position - 1;
 	for (let y = 0; y < board.length; y++) {
 		if (board[y][x] != 0) {
@@ -19,26 +19,27 @@ const getGrabbedDol = (position, board) => {
 	return 0;
 };
 
+const decideClear = (basket, grabbedDol) => {
+	return basket.length > 0 && basket[basket.length - 1] == grabbedDol;
+};
+
 function solution(board, moves) {
 	let answer = 0;
 	const basket = [];
 	moves.forEach(position => {
-		const grabbedDol = getGrabbedDol(position, board);
+		const grabbedDoll = getGrabbedDoll(position, board);
 
-		if (grabbedDol == 0) {
+		if (grabbedDoll == 0) {
 			return;
 		}
 
-		if (basket.length > 0) {
-			if (basket[basket.length - 1] == grabbedDol) {
-				basket.pop();
-				answer += 2;
-				return;
-			} else {
-				basket.push(grabbedDol);
-			}
+		const isClear = decideClear(basket, grabbedDoll);
+
+		if (isClear) {
+			basket.pop();
+			answer += 2;
 		} else {
-			basket.push(grabbedDol);
+			basket.push(grabbedDoll);
 		}
 	});
 	return answer;
