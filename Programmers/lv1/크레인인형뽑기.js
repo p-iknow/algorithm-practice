@@ -19,7 +19,7 @@ const getGrabbedDoll = (position, board) => {
 	return 0;
 };
 
-const decideClear = (basket, grabbedDol) => {
+const decideIsClear = (basket, grabbedDol) => {
 	return basket.length > 0 && basket[basket.length - 1] == grabbedDol;
 };
 
@@ -33,7 +33,7 @@ function solution(board, moves) {
 			return;
 		}
 
-		const isClear = decideClear(basket, grabbedDoll);
+		const isClear = decideIsClear(basket, grabbedDoll);
 
 		if (isClear) {
 			basket.pop();
